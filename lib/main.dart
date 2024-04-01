@@ -36,7 +36,7 @@ class _MyHomePageState extends State<MyHomePage>{
   Widget build(BuildContext context){
     return Scaffold(
       appBar: AppBar(
-        title: Text("Login as you wish"),
+        title: Text("Login and Have Fun"),
         leading: Icon(FontAwesomeIcons.dragon),
       ),
       body: Container(
