@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,21 +14,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Login Page',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a purple toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(seedColor: const Color.fromARGB(255, 69, 92, 150)),
         useMaterial3: true,
       ),
@@ -39,21 +25,35 @@ class MyApp extends StatelessWidget {
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
 
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
   final String title;
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
+class _MyHomePageState extends State<MyHomePage>{
+  @override
+  Widget build(BuildContext context){
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Login as you wish"),
+        leading: Icon(FontAwesomeIcons.dragon),
+      ),
+      body: Container(
+        transform: Matrix4.rotationZ(0.1),
+        color: Color.fromARGB(255, 57, 229, 134),
+        padding: EdgeInsets.all(50.0),
+        child: Container(
+          transform: Matrix4.rotationZ(-0.2),
+          constraints: BoxConstraints.expand(),
+          color: Colors.deepOrange,
+          child: Center(child: Text('Flutter is awesome', style: TextStyle(fontSize: 60.0, color: Colors.white),)),
+        ),
+      ),
+    );
+  }
+}
+/*
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
@@ -66,7 +66,7 @@ class _MyHomePageState extends State<MyHomePage> {
       // called again, and so nothing would appear to happen.
       _counter++;
     });
-  }
+  } 
 
   @override
   Widget build(BuildContext context) {
@@ -121,5 +121,5 @@ class _MyHomePageState extends State<MyHomePage> {
         child: const Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
-  }
-}
+  } 
+} */
