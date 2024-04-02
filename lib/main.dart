@@ -34,25 +34,58 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage>{
   @override
   Widget build(BuildContext context){
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Login and Have Fun"),
-        leading: Icon(FontAwesomeIcons.dragon),
-      ),
-      body: Container(
-        transform: Matrix4.rotationZ(0.1),
-        color: Color.fromARGB(255, 57, 229, 134),
-        padding: EdgeInsets.all(50.0),
-        child: Container(
-          transform: Matrix4.rotationZ(-0.2),
-          constraints: BoxConstraints.expand(),
-          color: Colors.deepOrange,
-          child: Center(child: Text('Flutter is awesome', style: TextStyle(fontSize: 60.0, color: Colors.white),)),
+    return DefaultTabController(
+      length: tabList.length,
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text("Login and Have Fun"),
+          leading: Icon(FontAwesomeIcons.dragon),
+          actions: <Widget>[
+            IconButton(
+              icon: Icon(FontAwesomeIcons.searchengin),
+              onPressed: null,
+            )
+          ],
+          bottom: TabBar(
+            tabs: tabList.map((choice) {
+              return Tab(
+                text: choice.title,
+                icon: Icon(choice.icon),
+              );
+            }).toList(),
+          ),
+        ),
+        body: Container(
+          transform: Matrix4.rotationZ(0.1),
+          color: Color.fromARGB(255, 57, 229, 134),
+          padding: EdgeInsets.all(50.0),
+          child: Container(
+            transform: Matrix4.rotationZ(-0.2),
+            constraints: BoxConstraints.expand(),
+            color: Colors.deepOrange,
+            child: Center(
+              child: Image.network(
+               'https://miro.medium.com/v2/resize:fit:702/format:webp/1*gfBn5vM5YBxxlJQulpUAMQ.gif', 
+               errorBuilder: (context, error, stackTrace) => Icon(Icons.error),
+              ),
+            ),
+          ),
         ),
       ),
     );
   }
 }
+
+class TabChoice {
+  final String title;
+  final IconData icon;
+  const TabChoice(this.title, this.icon);
+}
+
+const List<TabChoice> tabList = const <TabChoice>[
+  TabChoice('Happy', Icons.mood),
+  TabChoice('Sad', Icons.mood_bad),
+];
 /*
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
