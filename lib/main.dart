@@ -32,6 +32,16 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage>{
+  int _selectedIndex = 0;
+  static const List<Widget> _widgetOptions = <Widget>[
+    Icon(Icons.star, size: 200.0),
+    Icon(Icons.mood_bad, size: 200.0),
+    Icon(Icons.wb_sunny, size: 200.0),
+  ];
+  void _onItemTap(int index){
+    setState(() => _selectedIndex = index);
+  }
+
   @override
   Widget build(BuildContext context){
     return DefaultTabController(
@@ -54,6 +64,24 @@ class _MyHomePageState extends State<MyHomePage>{
               );
             }).toList(),
           ),
+        ),
+        bottomNavigationBar: BottomNavigationBar(
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: Icon(Icons.star),
+              label: 'Star',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.mood_bad),
+              label: 'Mood Bad',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.wb_sunny),
+              label: 'Sunny',
+            ),
+          ],
+          currentIndex: _selectedIndex,
+          onTap: _onItemTap,
         ),
         body: Container(
           transform: Matrix4.rotationZ(0.1),
