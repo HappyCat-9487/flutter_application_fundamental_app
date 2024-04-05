@@ -65,8 +65,8 @@ class _MyHomePageState extends State<MyHomePage>{
             color: Colors.deepOrange,
             child: Center(
               child: Image.network(
-               'https://miro.medium.com/v2/resize:fit:702/format:webp/1*gfBn5vM5YBxxlJQulpUAMQ.gif', 
-               errorBuilder: (context, error, stackTrace) => Icon(Icons.error),
+               'https://i.pinimg.com/564x/a4/30/17/a4301737cad3a6deb1bde5dc8799a4c7.jpg', 
+               errorBuilder: (context, error, stackTrace) => Image.asset('assets/images/loading.gif'),
               ),
             ),
           ),
